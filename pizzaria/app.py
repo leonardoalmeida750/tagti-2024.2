@@ -33,5 +33,27 @@ def cardapio():
     ]
     return render_template("cardapio.html", pizzas=pizzas)
 
+@app.route('/avaliacoes')
+def avaliacoes():
+    return render_template("avaliacoes.html")
+
+@app.route('/faleconosco', methods=["GET","POST"])
+def faleconosco():
+    if request.method == "POST":
+        nome = request.form["nome"]
+        email = request.form["email"]
+        mensagem = request.form["mensagem"]
+    else:
+        return render_template("faleconosco.html")
+
+@app.route('/login', methods=["GET","POST"])
+def login():
+    if request.method == "POST":
+        nome = request.form["nome"]
+        email = request.form["email"]
+        senha = request.form["senha"]
+    else:
+        return render_template("login.html")
+
 if __name__ == '__main__':
     app.run()
